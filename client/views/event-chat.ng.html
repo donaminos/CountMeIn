@@ -6,3 +6,8 @@
 	<input type="text" ng-model="chat.text" />
 	<input type="button" value="Chat" ng-click="chatnow()" />
 </div>
+
+<br/>
+<a href ng-click="addPollItem('checkboxes')" >AddPoll-MultipleSelection</a>
+<a href ng-click="addPollItem('radio')" >AddPoll-RadioSelection</a>
+<pollitem ng-repeat="pollitem_config in poll_items" config="pollitem_config"></pollitem>

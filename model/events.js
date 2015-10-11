@@ -3,13 +3,14 @@ Events = new Mongo.Collection('events');
 Meteor.methods({
     
     insertEvent:function(newEvent){
-        
-        return Events.insert(newEvent);
+        console.log(angular.toJson(newEvent));
+        return Events.insert( angular.toJson(newEvent) );
     },
     
     updateEvent:function(currentEvent)
     {
-        Events.update({_id:currentEvent._id}, currentEvent);
+    	var ob = JSON.parse(angular.toJson(currentEvent));
+        Events.update({_id:currentEvent._id}, ob);
     },
 
    	addChatItem : function(id,chat){
