@@ -18,8 +18,26 @@ angular.module("countmein").config(['$urlRouterProvider', '$stateProvider', '$lo
         .state('eventView', {
             url: '/event-view/:eventId',
             templateUrl: 'client/views/event-view.ng.html',
-            controller: 'EventShowCtrl'
-        });      
+            controller: 'EventShowCtrl',
+            abstract: true
+        })
+        .state('eventView.form', {
+            url: '/form',
+            templateUrl: 'client/views/event-form.ng.html',
+            controller: 'EventFormCtrl'
+        })
+        .state('eventView.chat', {
+            url: '/chat',
+            templateUrl: 'client/views/event-chat.ng.html',
+            controller: 'EventChatCtrl'
+        })
+        .state('eventView.participants', {
+            url: '/participants',
+            templateUrl: 'client/views/event-participants.ng.html',
+            controller: 'EventParticipantsCtrl'
+        }); 
+      
+        $urlRouterProvider.when("/event-view/:eventId", "/event-view/:eventId/form");
 
         $urlRouterProvider.otherwise("/");
   }]);

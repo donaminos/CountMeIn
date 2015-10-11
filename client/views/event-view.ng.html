@@ -1,6 +1,10 @@
 <div>
+    <a ng-href="/event-view/{{currentEvent._id}}/form">Home</a>
+    <a ng-href="/event-view/{{currentEvent._id}}/chat">Discussion</a>
+    <a ng-href="/event-view/{{currentEvent._id}}/participants">Participants</a>
     <h3>{{currentEvent.name}}</h3>
     <p>{{currentEvent.description}}</p>
+    <div ui-view></div>
     <a ng-href="/event-edit/{{currentEvent._id}}">Edit</a>
     <a href="/">Dashboard</a>
 </div>
