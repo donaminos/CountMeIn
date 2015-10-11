@@ -4,20 +4,21 @@ angular.module("countmein").config(['$urlRouterProvider', '$stateProvider', '$lo
     $locationProvider.html5Mode(true);
 
     $stateProvider
-        .state('home', {
+        .state('dashboard', {
             url: '/',
-            templateUrl: 'client/views/template.ng.html',
-            controller: 'controller'
+            templateUrl: 'client/views/dashboard.ng.html',
+            controller: 'DashboardCtrl'
         })
-        .state('t1', {
-            url: '/t1',
-            templateUrl: 'client/views/template1.ng.html',
-            controller: 'controller1'
+        .state('eventEdit/', {
+            url: '/event-edit/:eventId',
+            params: { eventId: {squash: true, value: null}},
+            templateUrl: 'client/views/event-edit.ng.html',
+            controller: 'EventEditCtrl'
         })
-        .state('t2', {
-            url: '/t2',
-            templateUrl: 'client/views/template2.ng.html',
-            controller: 'controller2'
+        .state('eventView', {
+            url: '/event-view/:eventId',
+            templateUrl: 'client/views/event-view.ng.html',
+            controller: 'EventShowCtrl'
         });      
 
         $urlRouterProvider.otherwise("/");

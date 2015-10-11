@@ -1,0 +1,9 @@
+<div>
+    <h1>Home</h1>
+    <a href="/event-edit">New</a>
+    <ul>
+        <li ng-repeat="evnt in events">
+            <a ng-href="/event-view/{{evnt._id}}">{{evnt.name}}</a>
+        </li>
+    </ul>
+</div>
