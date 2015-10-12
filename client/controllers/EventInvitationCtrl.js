@@ -29,12 +29,14 @@ angular.module('countmein').controller('EventInvitationCtrl', ['$scope', '$meteo
                         {
                             throw new Meteor.Error("Facebook login failed");
                         }
-                        $meteor.call('changeInvitationStatus', q, 'going')
-                        $location.path = '/event-view/' + targetEvent._id + '/form';
+                        $meteor.call('changeInvitationStatus', q, 'going').then(function(){
+                            $location.path('/event-view/' + targetEvent._id + '/form');
+                        }) 
                     });
                 }else{
-                    $meteor.call('changeInvitationStatus', q, 'going')
-                    $location.path = '/event-view/' + targetEvent._id + '/form';
+                    $meteor.call('changeInvitationStatus', q, 'going').then(function(){
+                        $location.path('/event-view/' + targetEvent._id + '/form');
+                    })                    
                 }
             }            
         }
@@ -43,7 +45,7 @@ angular.module('countmein').controller('EventInvitationCtrl', ['$scope', '$meteo
             if(targetEvent)
             {
                 $meteor.call('changeInvitationStatus', q, 'decline').then(function(){
-                    showThanks = true;
+                    $scope.showThanks = true;
                 });                
             } 
         }

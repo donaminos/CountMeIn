@@ -1,6 +1,8 @@
-<div ng-hide="showThanks">
-    <h3>Are you like to join?</h3>
-    <button ng-click='yes();'>Yes! Count me in</button>
-    <button ng-click='nope();'>No</button>
+<div>
+    <div ng-hide="showThanks">
+        <h3>Are you like to join?</h3>
+        <button ng-click='yes();'>Yes! Count me in</button>
+        <button ng-click='nope();'>No</button>
+    </div>
+    <h3 ng-show="showThanks">Thanks</h3>
 </div>
-<h3 ng-show=showThanks>Thanks</h3>
