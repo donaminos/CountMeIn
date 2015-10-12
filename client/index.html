@@ -5,6 +5,9 @@
     <base href="/">
 </head>
 <body>
-    <h1>Count Me In</h1>
+    <h1><a href="/">Count Me In</a></h1>
+    <div ng-show="$root.currentUser" ng-bind="$root.currentUser.services.facebook.name"></div>
+    <a ng-show="$root.currentUser" ng-href="/signout">Logout</a>
+    <a ng-hide="$root.currentUser" ng-href="/signin">Signin</a>
     <div ui-view></div>
 </body>

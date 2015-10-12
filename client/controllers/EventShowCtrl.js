@@ -5,4 +5,6 @@ angular.module('countmein').controller('EventShowCtrl', ['$scope', '$meteor', '$
                                                          
         $scope.currentEvent = Events.findOne({_id:$stateParams.eventId});
         
+        $scope.hasFullAccess = false;
+        
     }]);
