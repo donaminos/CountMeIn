@@ -1,10 +1,12 @@
 <div>
-    <a ng-href="/event-view/{{currentEvent._id}}/form">Home</a>
-    <a ng-href="/event-view/{{currentEvent._id}}/chat">Discussion</a>
-    <a ng-href="/event-view/{{currentEvent._id}}/participants">Participants</a>
+    <div ng-show="hasFullAccess">
+        <a ng-href="/event-view/{{currentEvent._id}}/form">Home</a>
+        <a ng-href="/event-view/{{currentEvent._id}}/chat">Discussion</a>
+        <a ng-href="/event-view/{{currentEvent._id}}/participants">Participants</a>
+    </div>
     <h3>{{currentEvent.name}}</h3>
     <p>{{currentEvent.description}}</p>
     <div ui-view></div>
     <a ng-href="/event-edit/{{currentEvent._id}}">Edit</a>
-    <a href="/">Dashboard</a>
+    <a href="/dashboard">Dashboard</a>
 </div>
