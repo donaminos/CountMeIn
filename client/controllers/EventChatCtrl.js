@@ -37,7 +37,7 @@ angular.module('countmein').controller('EventChatCtrl', ['$scope', '$meteor', '$
 		*/
 
         var eventid = $stateParams.eventId;
-        var currentuserId = "acdfkdfdxdfdf";
+        var currentuserId = Meteor.userId();
         
         // access parent scope
         //console.log("Parent:" + $scope.$parent.currentEvent);
