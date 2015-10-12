@@ -1,8 +1,8 @@
 <div>
-    <h1>Home</h1>
-    <a href="/event-edit">New</a>
-    <ul>
-        <li ng-repeat="evnt in events">
+    <h1>Dashbaord</h1>
+    <a href="/event-edit" type="button" class="btn btn-default">Create New Event</a>
+    <ul class="list-group" style="margin-top:15px">
+        <li class="list-group-item" ng-repeat="evnt in events">
             <a ng-href="/event-view/{{evnt._id}}">{{evnt.name}}</a>
         </li>
     </ul>

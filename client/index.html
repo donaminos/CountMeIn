@@ -5,9 +5,20 @@
     <base href="/">
 </head>
 <body>
-    <h1><a href="/">Count Me In</a></h1>
-    <div ng-show="$root.currentUser" ng-bind="$root.currentUser.services.facebook.name"></div>
-    <a ng-show="$root.currentUser" ng-href="/signout">Logout</a>
-    <a ng-hide="$root.currentUser" ng-href="/signin">Signin</a>
-    <div ui-view></div>
+    <div class="container">
+        <nav class="navbar navbar-default" style="margin-top:20px">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">Count Me In</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/dashboard"
+                           ng-show="$root.currentUser" ng-bind="$root.currentUser.services.facebook.name"></a></li>
+                    <li><a ng-show="$root.currentUser" href="/signout">Logout</a></li>
+                    <li><a ng-hide="$root.currentUser" href="/signin">Signin</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div ui-view></div>
+    </div>
 </body>
