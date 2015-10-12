@@ -1,4 +1,4 @@
-angular.module('countmein',[
+procountmein = angular.module('countmein',[
   'angular-meteor',
   'ui.router'
 ]);

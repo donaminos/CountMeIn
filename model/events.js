@@ -3,6 +3,7 @@ Events = new Mongo.Collection('events');
 
 Meteor.methods({
     
+
     findInvitation: function(q)
     {
         return Events.findOne({_id: q.id, participants:{ $elemMatch : { token: q.token}}});

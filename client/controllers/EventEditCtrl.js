@@ -4,7 +4,10 @@ angular.module('countmein').controller('EventEditCtrl', ['$scope', '$meteor', '$
         
         console.log("Show:" + $stateParams.eventId);
         
-        $scope.currentEvent = {};
+        $scope.currentEvent = {
+            polls_Questions : []
+        };
+
         $scope.currentEvent.participants = [];
         
         if($stateParams.eventId)
@@ -13,12 +16,16 @@ angular.module('countmein').controller('EventEditCtrl', ['$scope', '$meteor', '$
         }
         
         $scope.save = function(){
-            
-            var evnt = angular.copy($scope.currentEvent);
-            
+            for(var x in $scope.currentEvent.polls_Questions){
+                    if($scope.currentEvent.polls_Questions[x].polls.length == 0){
+                        $scope.currentEvent.polls_Questions.splice(x,1);
+                    }
+                    $scope.currentEvent.polls_Questions[x].state = "viewonly";
+                    
+            }
+            var evnt = JSON.parse(angular.toJson(angular.copy($scope.currentEvent)));
             evnt.owner = Meteor.userId();
-            
-            if($stateParams.eventId){
+            if($stateParams.eventId){    
                 $meteor.call('updateEvent', evnt).then(function(){
                     redirectToView($stateParams.eventId);
                 });
@@ -27,6 +34,21 @@ angular.module('countmein').controller('EventEditCtrl', ['$scope', '$meteor', '$
                     redirectToView(id);
                 });
             }
+        }
+
+        $scope.addPollItem = function(type){
+            var poolconf = {
+                    poll_title : "",
+                    poll_description : "",
+                    state : "create",  //allowchange   //viewonly
+                    polls : [],
+                    type : type //"checkboxes"  //radio //checkboxes
+            }
+            $scope.currentEvent.polls_Questions.push(poolconf);
+        }
+
+        $scope.editPol = function(index){
+            $scope.currentEvent.polls_Questions[index].state = "create" ;
         }
         
         $scope.addParticipants = function(emailAddress)

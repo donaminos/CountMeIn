@@ -1,6 +1,7 @@
 <div>
     <input type="text" ng-model='currentEvent.name'/>
     <input type="text" ng-model='currentEvent.description'/>
+
     <ul>
         <li ng-repeat="participant in currentEvent.participants">{{participant.email}}</li>
     </ul>
@@ -8,5 +9,17 @@
         <input type="text" ng-model='participantsEmail'/>
         <button ng-click="addParticipants(participantsEmail);">Invite</button>
     </div>
+
+    <br/>
+    <span>Add a 'Poll' question</span><br/>
+    <a href ng-click="addPollItem('checkboxes')" >+ Multi Selection Poll</a><br/>
+    <a href ng-click="addPollItem('radio')" >+ Radio Selection Poll</a><br/>
+    <br/>
+    <div ng-repeat="pollconfig in currentEvent.polls_Questions">
+    	<a href ng-click="editPol($index)"  ng-if="pollconfig.state == 'viewonly'" >edit</a>
+    	<pollitem  config="pollconfig"></pollitem>
+    </div>
+    <br/>
+
     <button ng-click='save();'>Save</button>
 </div>
