@@ -7,7 +7,7 @@ Meteor.methods({
     {
         return Events.findOne({_id: q.id, participants:{ $elemMatch : { token: q.token}}});
     },
-    
+	
     changeInvitationStatus: function(q, status)
     { 
         var set = {};
@@ -23,6 +23,20 @@ Meteor.methods({
             set['participants.$.status'] = status;
             Events.update({_id: q.id, participants:{ $elemMatch : { token: q.token}}}, {$set : set});
         }
+    },
+
+   	addChatItem : function(id,chat){
+        /*
+         chat ==>
+         {
+	         text : "",
+	         image : "", --> "" or url
+	         important :  --> 1-10
+	         votes : 10 --> numerical,number of upvotse 
+	         userId : ""
+         }
+        */
+        Events.update({ _id:id}, { $push: { chat : chat} })
     }
     
 });
@@ -72,6 +86,7 @@ if(Meteor.isServer){
           subject: subject,
           text: text
         });
-    }
+		
+	}    
     
 }
