@@ -38,7 +38,7 @@ return {
         				--$scope.config.polls[index].count;
         			}
 
-        			$scope.itemcheckedCallback && $scope.itemcheckedCallback(index,$scope.config.polls);
+        			$scope.config.itemcheckedCallback && $scope.config.itemcheckedCallback($scope.config.id,$scope.config.polls);
         	}
         } 
     }
