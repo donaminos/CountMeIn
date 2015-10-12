@@ -9,8 +9,7 @@ Meteor.methods({
     
     updateEvent:function(currentEvent)
     {
-    	var ob = JSON.parse(angular.toJson(currentEvent));
-        Events.update({_id:currentEvent._id}, ob);
+        console.log(Events.update({_id:currentEvent._id}, currentEvent));
     },
 
    	addChatItem : function(id,chat){

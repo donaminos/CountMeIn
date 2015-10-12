@@ -18,10 +18,12 @@ angular.module('countmein').controller('EventEditCtrl', ['$scope', '$meteor', '$
                     if($scope.currentEvent.polls_Questions[x].polls.length == 0){
                         $scope.currentEvent.polls_Questions.splice(x,1);
                     }
+                    $scope.currentEvent.polls_Questions[x].state = "viewonly";
+                    
                 }
-            //$scope.currentEvent.polls_Questions = ["ddf"];
             if($stateParams.eventId){
-                $meteor.call('updateEvent', $scope.currentEvent).then(function(ed){
+                var eventob = JSON.parse(angular.toJson($scope.currentEvent));
+                $meteor.call('updateEvent', eventob).then(function(ed){
                     redirectToView($stateParams.eventId);
                 });
             }else{                
@@ -35,11 +37,15 @@ angular.module('countmein').controller('EventEditCtrl', ['$scope', '$meteor', '$
             var poolconf = {
                     poll_title : "",
                     poll_description : "",
-                    state : "create",  //allowchange
+                    state : "create",  //allowchange   //viewonly
                     polls : [],
                     type : type //"checkboxes"  //radio //checkboxes
             }
             $scope.currentEvent.polls_Questions.push(poolconf);
+        }
+
+        $scope.editPol = function(index){
+            $scope.currentEvent.polls_Questions[index].state = "create" ;
         }
         
         function redirectToView(id){

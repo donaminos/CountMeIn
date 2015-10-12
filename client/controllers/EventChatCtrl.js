@@ -15,6 +15,7 @@ angular.module('countmein').controller('EventChatCtrl', ['$scope', '$meteor', '$
 		}
 		*/
 
+/*
 		$scope.createpollConfig = {
 			poll_title : "Place Visiting",
 			poll_description : "We need to decide a good place to visit, so please vote",
@@ -30,7 +31,10 @@ angular.module('countmein').controller('EventChatCtrl', ['$scope', '$meteor', '$
 			}
 		}
 
+
 		$scope.poll_items.push($scope.createpollConfig);
+
+		*/
 
         var eventid = $stateParams.eventId;
         var currentuserId = "acdfkdfdxdfdf";
@@ -60,16 +64,6 @@ angular.module('countmein').controller('EventChatCtrl', ['$scope', '$meteor', '$
         	}
         }
 
-        $scope.addPollItem = function(type){
-        		var poolconf = {
-					poll_title : "",
-					poll_description : "",
-					state : "create",  //allowchange
-					polls : [],
-					type : type //"checkboxes"  //radio //checkboxes
-				}
-
-				$scope.poll_items.push(poolconf);
-        }
+        
 
 }]);

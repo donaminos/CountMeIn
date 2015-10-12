@@ -1,5 +1,5 @@
 <div>
-<div ng-if="config.state == 'allowchange'">
+<div ng-if="config.state == 'allowchange' || config.state == 'viewonly'">
 	<h3>{{config.poll_title}}</h3>
 	<p>{{config.poll_description}}</p>
 </div>
@@ -12,15 +12,16 @@
 <div ng-if="config.state == 'create'">Poll{{config.type=='checkboxes' ? '-Checkbox' : '-Radio'}} </div>
 <ul style="list-style: none;" >
 	<li ng-repeat="poll in config.polls" ng-if="config.type=='checkboxes'">
-		<div><input   ng-change="changed($index)" ng-model="poll.value" ng-checked="poll.value" ng-disabled="config.state == 'create'" type="checkbox" />
+		<div><input   ng-change="changed($index)" ng-model="poll.value" ng-checked="poll.value" ng-disabled="config.state == 'create' || config.state == 'viewonly'" type="checkbox" />
 		    &nbsp;{{poll.text}}
 			 <span ng-if="config.state == 'create'" style="margin-left: 10px; font-size: 16px; font-weight: bold;" ng-click="removeItem($index)">(x)</span>
-			 <span ng-if="config.state == 'allowchange'" style="margin-left: 10px; font-size: 16px; font-weight: bold;" >{{poll.count}}</span>
+			 <span ng-if="config.state == 'allowchange' || config.state == 'viewonly' " style="margin-left: 10px; font-size: 16px; font-weight: bold;" >{{poll.count}}</span>
 		</div>
 	</li>
 	<li ng-repeat="poll in config.polls" ng-if="config.type=='radio'">
-		<div><input ng-change="changed($index)" ng-model="poll.value" ng-checked="poll.value" ng-disabled="config.state == 'create'" type="radio" name="item-group" />&nbsp;{{poll.text}}
+		<div><input ng-change="changed($index)" ng-model="poll.value" ng-checked="poll.value" ng-disabled="config.state == 'create' || config.state == 'viewonly'" type="radio" name="item-group" />&nbsp;{{poll.text}}
 			 <span ng-if="config.state == 'create'" style="margin-left: 10px; font-size: 16px; font-weight: bold;" ng-click="removeItem($index)">(x)</span>
+			 <span ng-if="config.state == 'allowchange' || config.state == 'viewonly' " style="margin-left: 10px; font-size: 16px; font-weight: bold;" >{{poll.count}}</span>
 		</div>
 	</li>
 	<li ng-if="config.state == 'create'">

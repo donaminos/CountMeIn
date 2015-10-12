@@ -7,6 +7,7 @@
     <a href ng-click="addPollItem('radio')" >+ Radio Selection Poll</a><br/>
     <br/>
     <div ng-repeat="pollconfig in currentEvent.polls_Questions">
+    	<a href ng-click="editPol($index)"  ng-if="pollconfig.state == 'viewonly'" >edit</a>
     	<pollitem  config="pollconfig"></pollitem>
     </div>
     <br/>
