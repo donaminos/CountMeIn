@@ -38,6 +38,7 @@ angular.module('countmein').controller('EventEditCtrl', ['$scope', '$meteor', '$
 
         $scope.addPollItem = function(type){
             var poolconf = {
+                    id : guid(),
                     poll_title : "",
                     poll_description : "",
                     state : "create",  //allowchange   //viewonly
